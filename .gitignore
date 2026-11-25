@@ -2,3 +2,8 @@
 zig-out/
 zig-pkg/
 *.o
+toolchain/
+test.bin
+test.elf
+test.gba
+test.sav
