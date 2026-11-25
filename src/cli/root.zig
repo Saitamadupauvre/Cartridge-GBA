@@ -4,6 +4,8 @@ const args = @import("args.zig");
 const parse = @import("parse.zig").parse;
 const help = @import("help.zig");
 const hdr = @import("commands/hdr.zig");
+const build = @import("commands/build_cmd.zig");
+const emu = @import("commands/emu.zig");
 
 fn printHelp(init: std.process.Init) !void {
     try help.print(init, clap.Help, &args.main_params, "cartridge-gba", "Cartridge SDK CLI entry");
@@ -30,5 +32,7 @@ pub fn parseAndRun(init: std.process.Init, allocator: std.mem.Allocator) !void {
 
     switch (command) {
         .hdr => try hdr.parseAndRun(init, allocator, &iter),
+        .build => try build.parseAndRun(init, allocator, &iter),
+        .emu => try emu.parseAndRun(init, allocator, &iter),
     }
 }

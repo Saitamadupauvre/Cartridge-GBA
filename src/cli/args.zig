@@ -1,6 +1,6 @@
 const clap = @import("clap");
 
-pub const MainCommand = enum { hdr };
+pub const MainCommand = enum { hdr, build, emu };
 pub const HdrCommand = enum { dump, gen };
 
 pub const main_parsers = .{
@@ -9,6 +9,16 @@ pub const main_parsers = .{
 pub const main_params = clap.parseParamsComptime(
     \\-h, --help  Display this help and exit.
     \\<command>
+    \\
+);
+
+pub const build_params = clap.parseParamsComptime(
+    \\-h, --help  Display this help and exit.
+    \\
+);
+
+pub const emu_params = clap.parseParamsComptime(
+    \\-h, --help  Display this help and exit.
     \\
 );
 
